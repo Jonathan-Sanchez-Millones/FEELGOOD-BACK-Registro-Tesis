@@ -1,0 +1,51 @@
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver    
+    url: jdbc:postgresql://67.205.143.180/tcs2
+    username: modulo2
+    password: modulo2
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    
+  banner:
+    location: classpath:/example/banner.txt 
+
+server:
+   port: 8095
+   error:
+    whitelabel:
+      enabled: false
+   
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:3000/
+    fetch-registry: false
+    register-with-eureka: false  
+  instance:
+    hostname: localhost
+    nonSecurePort: 8095
+
+  
+
+#https://modulo-alumno-eureka.herokuapp.com/eureka 
+
+
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: #http://localhost:8761/eureka/
+#  instance:
+#    hostname: localhost
+#    nonSecurePort: 8080
+#
+#banner:
+#  location: classpath:/example/banner.txt
