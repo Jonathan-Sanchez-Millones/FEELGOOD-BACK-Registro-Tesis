@@ -5,12 +5,14 @@
  */
 package edu.moduloalumno.entity;
 
+import javax.persistence.Id;
+
 /**
  *
  * @author Diego Lopez
  */
 public class AlumnoTemaTesisDocente {
-    
+	
     private int id_docente; // llave foranea
     private int id_atematesis; // llave foranea
     private int estado_id; // llave foranea
@@ -26,11 +28,13 @@ public class AlumnoTemaTesisDocente {
         this.rol_id = rol_id;
     }
 
-    public int getId_docente() {
-        return id_docente;
-    }
+    
 
-    public void setId_docente(int id_docente) {
+    public int getId_docente() {
+		return id_docente;
+	}
+
+	public void setId_docente(int id_docente) {
         this.id_docente = id_docente;
     }
 

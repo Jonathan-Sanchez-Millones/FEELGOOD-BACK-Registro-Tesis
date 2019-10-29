@@ -10,6 +10,7 @@ import edu.moduloalumno.entity.AlumnoTemaTesis;
 import edu.moduloalumno.rowmapper.AlumnoTemaTesisRowMapper;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -66,15 +67,15 @@ public class AlumnoTemaTesisDAOImpl implements IAlumnoTemaTesisDAO {
                 alumnoTemaTesis.getAtematesis_comentario(), alumnoTemaTesis.getCod_alumno(),
                 alumnoTemaTesis.getId_programa(), alumnoTemaTesis.getId_archivo(),
                 alumnoTemaTesis.getGi_id(), alumnoTemaTesis.getId_curso(), alumnoTemaTesis.getPlanestudios());
-        /*
-        sql = "SELECT * FROM public.alumno_tematesis WHERE id_atematesis =? and atematesis_titulo =? and  "
+        
+        sql = "SELECT * FROM public.alumno_tematesis WHERE atematesis_titulo =? and  "
                 + "atematesis_situacion=? and atematesis_problema=? and atematesis_justificacion=? and "
                 + "atematesis_fecha=? and atematesis_comentario=? and cod_alumno=? and id_programa=? and "
                 + "id_archivo=? and gi_id=? and id_curso=? and planestudios=?";
         RowMapper<AlumnoTemaTesis> rowMapper = new BeanPropertyRowMapper<AlumnoTemaTesis>(
                 AlumnoTemaTesis.class);
         AlumnoTemaTesis alumnoTemaTesisNew = jdbcTemplate.queryForObject(sql, rowMapper,
-                alumnoTemaTesis.getId_atematesis(), alumnoTemaTesis.getAtematesis_titulo(),
+                alumnoTemaTesis.getAtematesis_titulo(),
                 alumnoTemaTesis.getAtematesis_situacion(), alumnoTemaTesis.getAtematesis_problema(),
                 alumnoTemaTesis.getAtematesis_justificacion(), alumnoTemaTesis.getAtematesis_fecha(),
                 alumnoTemaTesis.getAtematesis_comentario(), alumnoTemaTesis.getCod_alumno(),
@@ -84,8 +85,8 @@ public class AlumnoTemaTesisDAOImpl implements IAlumnoTemaTesisDAO {
         System.out.println("alumnoTemaTesisNew" + alumnoTemaTesisNew);
 
         // get alumnoTemaTesis
-         */
-        return alumnoTemaTesis;
+         
+        return alumnoTemaTesisNew;
     }
 
     @Override

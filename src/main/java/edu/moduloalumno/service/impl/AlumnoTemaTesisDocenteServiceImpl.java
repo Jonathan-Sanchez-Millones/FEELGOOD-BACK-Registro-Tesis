@@ -10,12 +10,17 @@ import edu.moduloalumno.entity.AlumnoTemaTesisDocente;
 import edu.moduloalumno.service.IAlumnoTemaTesisDocenteService;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author Yveth Calixto
  */
+@Service
 public class AlumnoTemaTesisDocenteServiceImpl implements IAlumnoTemaTesisDocenteService {
 
+	@Autowired
     private IAlumnoTemaTesisDocenteDAO alumnoTemaTesisDocenteDAO;
     
     @Override
