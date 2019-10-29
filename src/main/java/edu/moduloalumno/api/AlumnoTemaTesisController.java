@@ -5,7 +5,9 @@
  */
 package edu.moduloalumno.api;
 
+import edu.moduloalumno.entity.AlumnoPrograma;
 import edu.moduloalumno.entity.AlumnoTemaTesis;
+import edu.moduloalumno.service.IAlumnoProgramaService;
 import edu.moduloalumno.service.IAlumnoTemaTesisService;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +36,9 @@ public class AlumnoTemaTesisController {
 
 	@Autowired
 	private IAlumnoTemaTesisService service;
+	
+	@Autowired
+	private IAlumnoProgramaService service_alumno_programa;
 	
 	@RequestMapping(value = "/buscar/{id_atematesis}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<AlumnoTemaTesis> getAlumnoTemaTesisById(@PathVariable("id_atematesis") Integer id_atematesis) {
@@ -104,10 +109,14 @@ public class AlumnoTemaTesisController {
 
 		logger.info("> addAlumnoTemaTesis [AlumnoTemaTesis]");
 		
+		AlumnoPrograma alumnoprograma=null;
 		AlumnoTemaTesis newAlumnoTemaTesis = null;
+		System.out.println("MIRA:"+alumnoTemaTesis.getCod_alumno());
 		try {
+			alumnoprograma=service_alumno_programa.getAlumnoProgramaById(alumnoTemaTesis.getCod_alumno());
+			System.out.println("MIRA2:"+alumnoprograma.getId_programa());
+			alumnoTemaTesis.setId_programa(alumnoprograma.getId_programa());
 			newAlumnoTemaTesis = service.addAlumnoTemaTesis(alumnoTemaTesis);
-			
 		} catch (Exception e) {
 			return new ResponseEntity<AlumnoTemaTesis>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}

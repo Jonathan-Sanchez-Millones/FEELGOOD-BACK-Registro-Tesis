@@ -19,10 +19,13 @@ public class AlumnoProgramaDAOImpl implements IAlumnoProgramaDAO {
 	private JdbcTemplate jdbcTemplate;
 
 	@Override
-	public AlumnoPrograma getAlumnoProgramaById(String codAlumno) {
-		String sql = "SELECT ap.cod_alumno, ap.ape_paterno, ap.ape_materno, ap.nom_alumno, ap.cod_especialidad, ap.cod_tip_ingreso, ap.cod_situ, ap.cod_perm, ap.anio_ingreso, ap.dni_m, ap.id_programa,p.nom_programa FROM alumno_programa ap,programa p WHERE (ap.id_programa = p.id_programa) and (cod_alumno = ?)";
-		RowMapper<AlumnoPrograma> rowMapper =  new AlumnoProgramaRowMapper();//new BeanPropertyRowMapper<AlumnoPrograma>(AlumnoPrograma.class);
-		AlumnoPrograma alumnoPrograma = jdbcTemplate.queryForObject(sql, rowMapper, codAlumno);
+	public AlumnoPrograma getAlumnoProgramaById(String cod_alumno) {
+		System.out.println("MIRAAAAA-");
+
+		String sql = "SELECT cod_alumno, id_programa FROM public.alumno_programa WHERE cod_alumno = ?";
+		RowMapper<AlumnoPrograma> rowMapper =  new AlumnoProgramaRowMapper();
+		AlumnoPrograma alumnoPrograma = jdbcTemplate.queryForObject(sql, rowMapper, cod_alumno);
+		System.out.println("MIRAAAAA:");
 		return alumnoPrograma;
 	}
 	
@@ -91,26 +94,26 @@ public class AlumnoProgramaDAOImpl implements IAlumnoProgramaDAO {
 	public void addAlumnoPrograma(AlumnoPrograma alumnoPrograma) {
 		// Add alumnoPrograma
 		String sql = "INSERT INTO alumno_programa (cod_alumno, ape_paterno, ape_materno, nom_alumno, cod_especialidad, cod_tip_ingreso, cod_situ, cod_perm, anio_ingreso, dni_m, id_programa) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		jdbcTemplate.update(sql, alumnoPrograma.getCodAlumno(), alumnoPrograma.getApePaterno(),
-				alumnoPrograma.getApeMaterno(), alumnoPrograma.getNomAlumno(), alumnoPrograma.getCodEspecialidad(),
-				alumnoPrograma.getCodTipIngreso(), alumnoPrograma.getCodSitu(), alumnoPrograma.getCodPerm(),
-				alumnoPrograma.getAnioIngreso(), alumnoPrograma.getDniM(), alumnoPrograma.getIdPrograma());
+		jdbcTemplate.update(sql, alumnoPrograma.getCod_alumno(), alumnoPrograma.getApe_paterno(),
+				alumnoPrograma.getApe_materno(), alumnoPrograma.getNom_alumno(), alumnoPrograma.getCod_especialidad(),
+				alumnoPrograma.getCod_tip_ingreso(), alumnoPrograma.getCod_situ(), alumnoPrograma.getCod_perm(),
+				alumnoPrograma.getAnio_ingreso(), alumnoPrograma.getDni_m(), alumnoPrograma.getId_programa());
 
 		// Fetch alumnoPrograma id
 		sql = "SELECT cod_alumno FROM alumno_programa WHERE cod_alumno = ?";
-		String codAlumno = jdbcTemplate.queryForObject(sql, String.class, alumnoPrograma.getCodAlumno());
+		String codAlumno = jdbcTemplate.queryForObject(sql, String.class, alumnoPrograma.getCod_alumno());
 
 		// Set alumnoPrograma id
-		alumnoPrograma.setCodAlumno(codAlumno);
+		alumnoPrograma.setCod_alumno(codAlumno);
 	}
 
 	@Override
 	public void updateAlumnoPrograma(AlumnoPrograma alumnoPrograma) {
 		String sql = "UPDATE alumno_programa SET ape_paterno = ?, ape_materno = ?, nom_alumno = ?, cod_especialidad = ?, cod_tip_ingreso = ?, cod_situ = ?, cod_perm = ?, anio_ingreso = ?, dni_m = ?, id_programa = ? WHERE cod_alumno = ?";
-		jdbcTemplate.update(sql, alumnoPrograma.getApePaterno(), alumnoPrograma.getApeMaterno(),
-				alumnoPrograma.getNomAlumno(), alumnoPrograma.getCodEspecialidad(), alumnoPrograma.getCodTipIngreso(),
-				alumnoPrograma.getCodSitu(), alumnoPrograma.getCodPerm(), alumnoPrograma.getAnioIngreso(),
-				alumnoPrograma.getDniM(), alumnoPrograma.getIdPrograma(), alumnoPrograma.getCodAlumno());
+		jdbcTemplate.update(sql, alumnoPrograma.getApe_paterno(), alumnoPrograma.getApe_materno(),
+				alumnoPrograma.getNom_alumno(), alumnoPrograma.getCod_especialidad(), alumnoPrograma.getCod_tip_ingreso(),
+				alumnoPrograma.getCod_situ(), alumnoPrograma.getCod_perm(), alumnoPrograma.getAnio_ingreso(),
+				alumnoPrograma.getDni_m(), alumnoPrograma.getId_programa(), alumnoPrograma.getCod_alumno());
 	}
 
 	@Override
