@@ -23,6 +23,12 @@ public class AlumnoTemaTesisDocenteServiceImpl implements IAlumnoTemaTesisDocent
 	@Autowired
     private IAlumnoTemaTesisDocenteDAO alumnoTemaTesisDocenteDAO;
     
+	@Override
+	public void deleteAlumnoTemaTesisDocente(int id_atematesis) {
+		
+		alumnoTemaTesisDocenteDAO.deleteAlumnoTemaTesisDocente(id_atematesis);
+	}
+
     @Override
     public List<AlumnoTemaTesisDocente> getAllAlumnoTemaTesisDocente() {
            return alumnoTemaTesisDocenteDAO.getAllAlumnoTemaTesisDocente();

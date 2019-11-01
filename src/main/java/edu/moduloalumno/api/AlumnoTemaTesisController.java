@@ -138,13 +138,13 @@ public class AlumnoTemaTesisController {
 		logger.info("> addAlumnoTemaTesis [AlumnoTemaTesis]");
 	}
     
-	@RequestMapping(value = "/delete", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void deleteAlumnoTemaTesis(@RequestBody AlumnoTemaTesis alumnoTemaTesis) {
+	@RequestMapping(value = "/delete/{id_atematesis}", method = RequestMethod.DELETE)
+	public void deleteAlumnoTemaTesis(@PathVariable("id_atematesis") int id_atematesis) {
 
 		logger.info("> addAlumnoTemaTesis [AlumnoTemaTesis]");
 		
 		try {
-			service.deleteAlumnoTemaTesis(alumnoTemaTesis.getId_atematesis());;
+			service.deleteAlumnoTemaTesis(id_atematesis);
 		} catch (Exception e) {
 		}
 

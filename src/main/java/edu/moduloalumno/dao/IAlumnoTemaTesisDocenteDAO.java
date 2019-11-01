@@ -26,4 +26,6 @@ public interface IAlumnoTemaTesisDocenteDAO {
 
 	void deleteAlumnoTemaTesisDocente(int idDoc, int idATemaTesis);
     
+	void deleteAlumnoTemaTesisDocente(int id_atematesis);
+
 }

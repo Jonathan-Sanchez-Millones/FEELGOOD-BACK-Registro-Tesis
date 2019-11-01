@@ -23,5 +23,7 @@ public interface IAlumnoTemaTesisDocenteService {
 	void updateAlumnoTemaTesisDocente(AlumnoTemaTesisDocente alumnoTemaTesisDocente);
 
 	void deleteAlumnoTemaTesisDocente(int idDoc, int idATemaTesis);
+	
+	void deleteAlumnoTemaTesisDocente(int id_atematesis);
     
 }

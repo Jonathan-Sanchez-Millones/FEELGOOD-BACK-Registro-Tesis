@@ -78,4 +78,10 @@ public class AlumnoTemaTesisDocenteDAOImpl implements IAlumnoTemaTesisDocenteDAO
 		jdbcTemplate.update(sql, idDoc,idATemaTesis);
     }
     
+    @Override
+    public void deleteAlumnoTemaTesisDocente(int id_atematesis) {
+                String sql = "DELETE FROM alumno_tematesis_docente WHERE id_atematesis=?";
+		jdbcTemplate.update(sql,id_atematesis);
+    }
+    
 }
