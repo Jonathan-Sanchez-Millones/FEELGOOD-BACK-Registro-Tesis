@@ -34,7 +34,7 @@ public class TesissDAOImpl implements ITesissDAO{
 				"gi ON att.gi_id=gi.gi_id JOIN curso cu ON att.id_curso=cu.id_curso JOIN \r\n" + 
 				"alumno_tematesis_docente attd ON att.id_atematesis=attd.id_atematesis JOIN\r\n" + 
 				"docente d ON attd.id_docente=d.id_docente JOIN estado e ON attd.estado_id=e.estado_id\r\n" + 
-				"JOIN rol r ON attd.rol_id=r.rol_id where ap.cod_alumno = ?";
+				"JOIN rol r ON attd.rol_id=r.rol_id where ap.cod_alumno = ? order by att.id_atematesis";
         RowMapper<Tesiss> rowMapper = new TesissRowMapper();
         List<Tesiss> lista_tesis = this.jdbcTemplate.query(sql, rowMapper, codigo);
         return lista_tesis;

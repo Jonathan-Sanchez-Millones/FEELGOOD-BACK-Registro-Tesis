@@ -93,16 +93,14 @@ public class AlumnoTemaTesisDAOImpl implements IAlumnoTemaTesisDAO {
     public void updateAlumnoTemaTesis(AlumnoTemaTesis alumnoTemaTesis) {
         String sql = "UPDATE public.alumno_tematesis SET  atematesis_titulo=?, atematesis_situacion=?, "
                 + "atematesis_problema=?, atematesis_justificacion=?, atematesis_fecha=?, "
-                + "atematesis_comentario=?, cod_alumno=?, id_programa=?, id_archivo=?, gi_id=?, "
+                + "atematesis_comentario=?, gi_id=?, "
                 + "id_curso=?, planestudios=? WHERE id_atematesis=?";
 
         jdbcTemplate.update(sql, alumnoTemaTesis.getAtematesis_titulo(),
                 alumnoTemaTesis.getAtematesis_situacion(), alumnoTemaTesis.getAtematesis_problema(),
                 alumnoTemaTesis.getAtematesis_justificacion(), alumnoTemaTesis.getAtematesis_fecha(),
-                alumnoTemaTesis.getAtematesis_comentario(), alumnoTemaTesis.getCod_alumno(),
-                alumnoTemaTesis.getId_programa(), alumnoTemaTesis.getId_archivo(),
-                alumnoTemaTesis.getGi_id(), alumnoTemaTesis.getId_curso(), alumnoTemaTesis.getPlanestudios(),
-                alumnoTemaTesis.getId_atematesis());
+                alumnoTemaTesis.getAtematesis_comentario(),alumnoTemaTesis.getGi_id(), alumnoTemaTesis.getId_curso(),
+                alumnoTemaTesis.getPlanestudios(),alumnoTemaTesis.getId_atematesis());
 
     }
 

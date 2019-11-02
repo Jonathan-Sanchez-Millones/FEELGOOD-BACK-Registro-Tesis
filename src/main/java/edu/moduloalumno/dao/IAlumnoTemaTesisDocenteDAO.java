@@ -22,7 +22,7 @@ public interface IAlumnoTemaTesisDocenteDAO {
 
 	AlumnoTemaTesisDocente addAlumnoTemaTesisDocente(AlumnoTemaTesisDocente alumnoTemaTesisDocente);
 
-	void updateAlumnoTemaTesisDocente(AlumnoTemaTesisDocente alumnoTemaTesisDocente);
+	AlumnoTemaTesisDocente updateAlumnoTemaTesisDocente(AlumnoTemaTesisDocente alumnoTemaTesisDocente);
 
 	void deleteAlumnoTemaTesisDocente(int idDoc, int idATemaTesis);
     

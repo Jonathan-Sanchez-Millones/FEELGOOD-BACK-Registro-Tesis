@@ -46,8 +46,8 @@ public class AlumnoTemaTesisDocenteServiceImpl implements IAlumnoTemaTesisDocent
     }
 
     @Override
-    public void updateAlumnoTemaTesisDocente(AlumnoTemaTesisDocente alumnoTemaTesisDocente) {
-                alumnoTemaTesisDocenteDAO.updateAlumnoTemaTesisDocente(alumnoTemaTesisDocente);
+    public AlumnoTemaTesisDocente updateAlumnoTemaTesisDocente(AlumnoTemaTesisDocente alumnoTemaTesisDocente) {
+                return alumnoTemaTesisDocenteDAO.updateAlumnoTemaTesisDocente(alumnoTemaTesisDocente);
 
     }
 

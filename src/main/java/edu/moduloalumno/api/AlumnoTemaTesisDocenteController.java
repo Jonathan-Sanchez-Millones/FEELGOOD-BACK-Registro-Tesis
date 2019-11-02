@@ -60,4 +60,21 @@ public class AlumnoTemaTesisDocenteController {
 
 		logger.info("> addAlumnoTemaTesis [AlumnoTemaTesis]");
 	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<AlumnoTemaTesisDocente> updateAlumnoTemaTesisDocente(@RequestBody AlumnoTemaTesisDocente alumnoTemaTesisDocente) {
+
+		logger.info("> addAlumnoTemaTesis [AlumnoTemaTesis]");
+		
+		AlumnoTemaTesisDocente newAlumnoTemaTesis = null;
+		try {
+			newAlumnoTemaTesis = service.updateAlumnoTemaTesisDocente(alumnoTemaTesisDocente);
+			
+		} catch (Exception e) {
+			return new ResponseEntity<AlumnoTemaTesisDocente>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		logger.info("> addAlumnoTemaTesis [AlumnoTemaTesis]");
+		return new ResponseEntity<AlumnoTemaTesisDocente>(newAlumnoTemaTesis, HttpStatus.CREATED);
+	}
 }

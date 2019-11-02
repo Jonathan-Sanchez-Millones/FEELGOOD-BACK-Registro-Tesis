@@ -66,10 +66,12 @@ public class AlumnoTemaTesisDocenteDAOImpl implements IAlumnoTemaTesisDocenteDAO
     }
 
     @Override
-    public void updateAlumnoTemaTesisDocente(AlumnoTemaTesisDocente alumnoTemaTesisDocente) {
-                String sql = "UPDATE alumno_tematesis_docente SET estado_id=?, rol_id=? WHERE id_docente= ? and id_atematesis=?";
-		jdbcTemplate.update(sql,alumnoTemaTesisDocente.getEstado_id(), alumnoTemaTesisDocente.getRol_id(),
-                            alumnoTemaTesisDocente.getId_docente(), alumnoTemaTesisDocente.getId_atematesis());
+    public AlumnoTemaTesisDocente updateAlumnoTemaTesisDocente(AlumnoTemaTesisDocente alumnoTemaTesisDocente) {
+                String sql = "UPDATE alumno_tematesis_docente SET id_docente= ? , estado_id=?, rol_id=? WHERE id_atematesis=?";
+		jdbcTemplate.update(sql,alumnoTemaTesisDocente.getId_docente(),alumnoTemaTesisDocente.getEstado_id(), alumnoTemaTesisDocente.getRol_id(),
+                            alumnoTemaTesisDocente.getId_atematesis());
+		
+		return alumnoTemaTesisDocente;
     }
 
     @Override
