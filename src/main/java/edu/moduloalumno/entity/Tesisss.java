@@ -12,6 +12,7 @@ public class Tesisss {
 	private String atematesis_comentario;
 	private int gi_id;
 	private Integer id_curso;
+	private Integer planestudios;
 	private Integer id_docente;
 	private int estado_id;
 	private Integer rol_id;
@@ -20,7 +21,7 @@ public class Tesisss {
 	
 	public Tesisss(String atematesis_titulo, String atematesis_situacion, String atematesis_problema,
 			String atematesis_justificacion, Date atematesis_fecha, String atematesis_comentario, int gi_id,
-			Integer id_curso, Integer id_docente,int estado_id, Integer rol_id) {
+			Integer id_curso, Integer planestudios,Integer id_docente,int estado_id, Integer rol_id) {
 		
 		this.atematesis_titulo = atematesis_titulo;
 		this.atematesis_situacion = atematesis_situacion;
@@ -30,12 +31,21 @@ public class Tesisss {
 		this.atematesis_comentario = atematesis_comentario;
 		this.gi_id = gi_id;
 		this.id_curso = id_curso;
+		this.planestudios=planestudios;
 		this.id_docente=id_docente;
 		this.estado_id = estado_id;
 		this.rol_id = rol_id;
 	}
 
 	
+	public Integer getPlanestudios() {
+		return planestudios;
+	}
+
+	public void setPlanestudios(Integer planestudios) {
+		this.planestudios = planestudios;
+	}
+
 	public Integer getId_docente() {
 		return id_docente;
 	}

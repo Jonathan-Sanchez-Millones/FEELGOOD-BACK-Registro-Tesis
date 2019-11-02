@@ -23,6 +23,7 @@ public class TesisssRowMapper implements RowMapper<Tesisss>{
 		 	tesis.setAtematesis_comentario(row.getString("atematesis_comentario"));
 		 	tesis.setGi_id(row.getInt("gi_id"));
 		 	tesis.setId_curso(row.getInt("id_curso"));
+		 	tesis.setPlanestudios(row.getInt("planestudios"));
 		 	tesis.setId_docente(row.getInt("id_docente"));
 		 	tesis.setEstado_id(row.getInt("estado_id"));
 		 	tesis.setRol_id(row.getInt("rol_id"));

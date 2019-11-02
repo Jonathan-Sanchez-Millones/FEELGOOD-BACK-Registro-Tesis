@@ -26,7 +26,7 @@ public class TesisssDAOImpl implements ITesisssDAO{
 		
 		String sql = "select atematesis_titulo,atematesis_situacion,atematesis_problema,\r\n" + 
 				"atematesis_justificacion,atematesis_fecha,atematesis_comentario,\r\n" + 
-				"gi_id,id_curso,id_docente,estado_id,rol_id from alumno_tematesis att JOIN alumno_tematesis_docente attd\r\n" + 
+				"gi_id,id_curso,planestudios,id_docente,estado_id,rol_id from alumno_tematesis att JOIN alumno_tematesis_docente attd\r\n" + 
 				"ON att.id_atematesis=attd.id_atematesis where att.id_atematesis=?";
         RowMapper<Tesisss> rowMapper = new TesisssRowMapper();
         Tesisss tesis = this.jdbcTemplate.queryForObject(sql, rowMapper, id_atematesis);
