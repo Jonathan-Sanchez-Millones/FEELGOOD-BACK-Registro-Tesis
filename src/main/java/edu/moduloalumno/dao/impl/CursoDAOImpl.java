@@ -20,10 +20,12 @@ public class CursoDAOImpl implements ICursoDAO{
 	private JdbcTemplate jdbcTemplate;
 	
 	@Override
-	public List<Curso> getAllCursos() {
-		String sql = "SELECT id_curso, nom_curso, id_programa, numciclo, numcreditaje , tipocurso , planestudios  FROM curso";
+	public List<Curso> getAllCursos(String cod_alumno) {
+		String sql = "select id_curso, nom_curso, ap.id_programa, numciclo, numcreditaje ,\r\n" + 
+				"tipocurso , planestudios from alumno_programa ap join Curso cu ON\r\n" + 
+				"ap.id_programa=cu.id_programa where cod_alumno= ? ";
 		
 		RowMapper<Curso> rowMapper = new CursoRowMapper();
-		return this.jdbcTemplate.query(sql, rowMapper);
+		return this.jdbcTemplate.query(sql, rowMapper,cod_alumno);
 	}
 }

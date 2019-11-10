@@ -6,6 +6,6 @@ import edu.moduloalumno.entity.Curso;
 
 public interface ICursoDAO {
 
-	List<Curso> getAllCursos();
+	List<Curso> getAllCursos(String cod_alumno);
 
 }

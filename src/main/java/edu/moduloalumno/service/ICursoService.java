@@ -5,5 +5,5 @@ import edu.moduloalumno.entity.Curso;
 
 public interface ICursoService {
 
-	List<Curso> getAllCursos();
+	List<Curso> getAllCursos(String cod_alumno);
 }

@@ -16,9 +16,9 @@ public class CursoServiceImpl implements ICursoService{
 	private ICursoDAO cursoDAO;
 	
 	@Override
-	public List<Curso> getAllCursos() {
+	public List<Curso> getAllCursos(String cod_alumno) {
 		
-		List<Curso> cursoList = cursoDAO.getAllCursos();
+		List<Curso> cursoList = cursoDAO.getAllCursos(cod_alumno);
 		
 		return cursoList;
 	}
