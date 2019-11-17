@@ -9,6 +9,8 @@ public interface IAlumnoProgramaJOINProgramaJOINAlumnoService {
 	
 	List<AlumnoProgramaJOINProgramaJOINAlumno> getAllAlumnoProgramaJOINProgramaJOINAlumnos();
 	
+	AlumnoProgramaJOINProgramaJOINAlumno getAlumnoProgramaJOINProgramaJOINAlumnosById(String cod_alumno);
+	
 	List<AlumnoProgramaJOINProgramaJOINAlumno> getAlumnoProgramaJOINProgramaJOINAlumnoIdByNombresApellidosRestringido( String nombresApellidos);
 	
 	Programa getProgramabyId(Integer id_programa);

@@ -71,6 +71,16 @@ public class AlumnoProgramaJOINProgramaJOINAlumnoDAOImpl implements IAlumnoProgr
 			return null;
 		}	
 	}
+
+	@Override
+	public AlumnoProgramaJOINProgramaJOINAlumno getAlumnoProgramaJOINProgramaJOINAlumnosById(String cod_alumno) {
+		
+		String sql = "select nom_alumno||' '||ape_paterno||' '||ape_materno as nom_alumno,cod_alumno,p.id_programa,nom_programa,sigla_programa from alumno_programa ap join programa p on \n" + 
+				"ap.id_programa=p.id_programa where ap.cod_alumno=?";
+
+				RowMapper<AlumnoProgramaJOINProgramaJOINAlumno> rowMapper = new AlumnoProgramaJOINProgramaJOINAlumnoRowMapper();
+				return this.jdbcTemplate.queryForObject(sql, rowMapper,cod_alumno);
+	}
 	
 	
 	

@@ -33,6 +33,12 @@ public class AlumnoProgramaJOINProgramaJOINAlumnoServiceImpl implements IAlumnoP
 		Programa programa = alumnoAlumnoProgramaDAO.getProgramabyId(id_programa);
 		return programa;
 	}
+
+	@Override
+	public AlumnoProgramaJOINProgramaJOINAlumno getAlumnoProgramaJOINProgramaJOINAlumnosById(String cod_alumno) {
+		
+		return alumnoAlumnoProgramaDAO.getAlumnoProgramaJOINProgramaJOINAlumnosById(cod_alumno);
+	}
 	
 	
 }

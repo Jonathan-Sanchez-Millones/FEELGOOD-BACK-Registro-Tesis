@@ -29,6 +29,28 @@ public class AlumnoProgramaJOINProgramaJOINAlumnoController {
 
 	@Autowired
 	private IAlumnoProgramaJOINProgramaJOINAlumnoService service;
+	
+	@RequestMapping(value = "/buscar/{cod_alumno}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<AlumnoProgramaJOINProgramaJOINAlumno> getAlumnoProgramaJOINProgramaJOINAlumnosById(
+			@PathVariable("cod_alumno") String cod_alumno) {
+		logger.info("> getAllAlumnoProgramaJOINProgramaJOINAlumnos [AlumnoProgramaJOINProgramaJOINAlumno]");
+
+		AlumnoProgramaJOINProgramaJOINAlumno ap = null;
+		try {
+			ap = service.getAlumnoProgramaJOINProgramaJOINAlumnosById(cod_alumno);
+
+			if (ap == null) {
+				ap = new AlumnoProgramaJOINProgramaJOINAlumno();
+			}
+			
+		} catch (Exception e) {
+			logger.error("Unexpected Exception caught.", e);
+			return new ResponseEntity<AlumnoProgramaJOINProgramaJOINAlumno>(ap, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		logger.info("< getAllAlumnoProgramaJOINProgramaJOINAlumnos [AlumnoProgramaJOINProgramaJOINAlumno]");
+		return new ResponseEntity<AlumnoProgramaJOINProgramaJOINAlumno>(ap, HttpStatus.OK);
+	}
 
 	@RequestMapping(value = "/listar", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<AlumnoProgramaJOINProgramaJOINAlumno>> getAllAlumnoProgramaJOINProgramaJOINAlumnos() {

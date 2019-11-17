@@ -10,7 +10,6 @@ public class AlumnoProgramaJOINProgramaJOINAlumnoRowMapper implements RowMapper<
 	@Override
 	public AlumnoProgramaJOINProgramaJOINAlumno mapRow(ResultSet row, int rowNum) throws SQLException {
 		AlumnoProgramaJOINProgramaJOINAlumno alumnoProgramaJOINProgramaJOINAlumno = new AlumnoProgramaJOINProgramaJOINAlumno();
-		alumnoProgramaJOINProgramaJOINAlumno.setIdAlumno(row.getInt("id_alum"));
 		alumnoProgramaJOINProgramaJOINAlumno.setApeNom(row.getString("nom_alumno"));
 		alumnoProgramaJOINProgramaJOINAlumno.setCodAlumno(row.getString("cod_alumno"));
 		alumnoProgramaJOINProgramaJOINAlumno.setIdPrograma(row.getInt("id_programa"));
