@@ -48,4 +48,26 @@ public class TesissController {
 		logger.info("< getAllAlumnoTemaTesis [AlumnoTemaTesis]");
 		return new ResponseEntity<List<Tesiss>>(list, HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/listaralumnos/{id_docente}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Tesiss>> getAllAlumnos(@PathVariable("id_docente") int id_docente) {
+		logger.info("> getAllAlumnoTemaTesis [AlumnoTemaTesis]");
+
+		List<Tesiss> list = null;
+		try {
+			list = service.getAllAlumnos(id_docente);
+
+			if (list == null) {
+				list = new ArrayList<Tesiss>();
+			}
+			
+		} catch (Exception e) {
+			logger.error("Unexpected Exception caught.", e);
+			return new ResponseEntity<List<Tesiss>>(list, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		logger.info("< getAllAlumnoTemaTesis [AlumnoTemaTesis]");
+		return new ResponseEntity<List<Tesiss>>(list, HttpStatus.OK);
+	}
+	
 }

@@ -19,4 +19,10 @@ public class TesissServiceImpl implements ITesissService{
     public List<Tesiss> getAllTesiss(String codigo) {
         return tesissDAO.getAllTesiss(codigo);
     }
+
+	@Override
+	public List<Tesiss> getAllAlumnos(int id_docente) {
+        return tesissDAO.getAllAlumnos(id_docente);
+
+	}
 }

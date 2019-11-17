@@ -9,4 +9,6 @@ public interface ITesissDAO {
 
 	List<Tesiss> getAllTesiss(String codigo);
 
+	List<Tesiss> getAllAlumnos(int id_docente);
+
 }

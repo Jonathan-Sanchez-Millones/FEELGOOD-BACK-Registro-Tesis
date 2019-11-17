@@ -7,4 +7,7 @@ import edu.moduloalumno.entity.Tesiss;
 public interface ITesissService {
 
 	List<Tesiss> getAllTesiss(String codigo);
+	
+	List<Tesiss> getAllAlumnos(int id_docente);
+
 }

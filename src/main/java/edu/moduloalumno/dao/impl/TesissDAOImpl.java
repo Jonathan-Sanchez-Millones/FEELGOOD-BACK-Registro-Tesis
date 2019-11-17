@@ -12,6 +12,7 @@ import edu.moduloalumno.dao.ITesissDAO;
 import edu.moduloalumno.entity.AlumnoTemaTesis;
 import edu.moduloalumno.entity.Tesiss;
 import edu.moduloalumno.rowmapper.AlumnoTemaTesisRowMapper;
+import edu.moduloalumno.rowmapper.AlumnosRowMapper;
 import edu.moduloalumno.rowmapper.TesissRowMapper;
 
 @Transactional
@@ -37,6 +38,22 @@ public class TesissDAOImpl implements ITesissDAO{
 				"JOIN rol r ON attd.rol_id=r.rol_id where ap.cod_alumno = ? order by att.id_atematesis";
         RowMapper<Tesiss> rowMapper = new TesissRowMapper();
         List<Tesiss> lista_tesis = this.jdbcTemplate.query(sql, rowMapper, codigo);
+        return lista_tesis;
+	}
+
+	@Override
+	public List<Tesiss> getAllAlumnos(int id_docente) {
+		
+		String sql = "select at.cod_alumno as codigo,ap.nom_alumno||' '||ap.ape_paterno||' '||ap.ape_materno\r\n" + 
+				"as alumno,c.nom_curso as curso,at.planestudios as plan_estudios,\r\n" + 
+				"string_agg(at.atematesis_titulo, ',') as titulo\r\n" + 
+				"from alumno_tematesis at join alumno_tematesis_docente atd on \r\n" + 
+				"at.id_atematesis=atd.id_atematesis join alumno_programa ap on\r\n" + 
+				"at.cod_alumno=ap.cod_alumno join curso c on at.id_curso=c.id_curso\r\n" + 
+				"where atd.id_docente=? group by at.cod_alumno,alumno,at.id_curso\r\n" + 
+				",c.nom_curso,at.planestudios;";
+        RowMapper<Tesiss> rowMapper = new AlumnosRowMapper();
+        List<Tesiss> lista_tesis = this.jdbcTemplate.query(sql, rowMapper, id_docente);
         return lista_tesis;
 	}
 
