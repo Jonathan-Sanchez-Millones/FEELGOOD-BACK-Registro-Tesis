@@ -23,7 +23,7 @@ public class CursoDAOImpl implements ICursoDAO{
 	public List<Curso> getAllCursos(String cod_alumno) {
 		String sql = "select id_curso, nom_curso, ap.id_programa, numciclo, numcreditaje ,\r\n" + 
 				"tipocurso , planestudios from alumno_programa ap join Curso cu ON\r\n" + 
-				"ap.id_programa=cu.id_programa where cod_alumno= ? ";
+				"ap.id_programa=cu.id_programa where cod_alumno= ? and cu.id_clase_curso=2 ";
 		
 		RowMapper<Curso> rowMapper = new CursoRowMapper();
 		return this.jdbcTemplate.query(sql, rowMapper,cod_alumno);
